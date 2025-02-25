@@ -1,0 +1,27 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:latest
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install Dependencies
+          command: npm install
+
+      - run:
+          name: Add VPS to Known Hosts
+          command: ssh-keyscan -H [MACHINE_IP] >> ~/.ssh/known_hosts
+
+      - run:
+          name: Deploy to VPS
+          command: ssh root@[MACHINE_IP] 'cd [PROJECT_ROOT] && git pull origin main && npm install && systemctl restart [SYSTEMD_SERVICE_NAME] && journalctl -u [SYSTEMD_SERVICE_NAME].service -n 15'
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
