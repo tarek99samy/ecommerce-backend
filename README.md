@@ -1,6 +1,14 @@
 # E-Commerce Backend
 
-> The server side of Multi-language E-Commerce website similar to `dubbizzle`
+> A Node.js (Express) backend for a multi-language e-commerce platform similar to Dubizzle. It features MySQL for data storage, JWT authentication, Redis caching, and Google Translate for multi-language support. The project includes validation with JOI, code consistency with ESLint & Prettier, and CircleCI integration for automated CI/CD deployment.
+
+Key Features:
+Secure authentication with JWT
+Efficient caching with Redis
+Automated deployment via CircleCI
+Multi-language support with Google Translate
+WhatsApp OTP messaging integration
+
 
 ## Technologies Used:
 
